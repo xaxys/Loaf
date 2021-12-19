@@ -35,9 +35,7 @@ namespace Loaf
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-            AppCenter.Start("c71080c8-ac9c-4246-8651-ccf786533b21",
-                   typeof(Analytics), typeof(Crashes));
+            InitializeComponent();
         }
 
         /// <summary>

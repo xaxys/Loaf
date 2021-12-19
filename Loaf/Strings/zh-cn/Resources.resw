@@ -151,7 +151,10 @@
     <value>请注意</value>
   </data>
   <data name="RestartHint.Text" xml:space="preserve">
-    <value>计算机可能会重启几次</value>
+    <value>你的电脑将重启若干次。</value>
+  </data>
+  <data name="StyleToggleButton.Content" xml:space="preserve">
+    <value>切换风格</value>
   </data>
   <data name="ThisIsA.Text" xml:space="preserve">
     <value>这是一个</value>
@@ -184,9 +187,15 @@
     <value>吧。</value>
   </data>
   <data name="UpdatingHint.Text" xml:space="preserve">
-    <value>请保持计算机打开状态。</value>
+    <value>请不要关闭电脑。完成此操作需要一定的时间。</value>
   </data>
   <data name="UpdatingText" xml:space="preserve">
     <value>正在进行更新 {0}%</value>
+  </data>
+  <data name="Win10StyleText" xml:space="preserve">
+    <value>Win10风格（蓝色背景）</value>
+  </data>
+  <data name="Win11StyleText" xml:space="preserve">
+    <value>Win11风格（黑色背景）</value>
   </data>
 </root>

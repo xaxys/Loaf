@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
    
     mc:Ignorable="d">
-    <Grid  x:Name="Root"  >
+    <Grid x:Name="Root">
         <Frame x:Name="Frame"/>
     </Grid>
 </Window>

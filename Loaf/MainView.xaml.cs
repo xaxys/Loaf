@@ -1,20 +1,8 @@
 ﻿using CommunityToolkit.WinUI.Helpers;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Xaml.Navigation;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -23,30 +11,61 @@ namespace Loaf
 {
     public sealed partial class MainView 
     {
+        private static bool useWin10Style = false;
+        private static bool firstLaunch = true;
+        private bool UseWin10Style
+        {
+            get => useWin10Style;
+            set
+            {
+                useWin10Style = value;
+                StyleTextBlock.Text = ResourceExtensions.GetLocalized(value ? "Win10StyleText" : "Win11StyleText");
+            }
+        }
+
         public MainView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             VersionElement.Text = GetVersion();
+            StyleToggleButton.Loaded += OnStyleToggleButtonLoaded;
         }
 
 
-        private string GetVersion()
+        private static string GetVersion()
         {
             var package = Package.Current;
             var packageId = package.Id;
             var version = packageId.Version;
 
-            return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+            return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision} Reloaded";
+        }
+
+        private void OnStyleToggleButtonLoaded(object sender, RoutedEventArgs e)
+        {
+            StyleToggleButton.IsChecked = UseWin10Style;
+        }
+
+        private void OnToggleStyle(object sender, RoutedEventArgs e)
+        {
+            UseWin10Style = StyleToggleButton.IsChecked == true;
         }
 
         private void OnLoaf(object sender, RoutedEventArgs e)
         {
-            LoafTeachingTip.IsOpen = true;
+            if (firstLaunch)
+            {
+                LoafTeachingTip.IsOpen = true;
+            }
+            else
+            {
+                OnStartLoaf(null, null);
+            }
         }
 
         private void OnStartLoaf(TeachingTip sender, object args)
         {
-            MainWindow.Instance.Loaf();
+            MainWindow.Instance.Loaf(UseWin10Style ? Microsoft.UI.ColorHelper.FromArgb(192, 00, 120, 215) : Colors.Black);
+            firstLaunch = false;
         }
 
         private async void OnRate(object sender, RoutedEventArgs e)

@@ -71,36 +71,55 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid Margin="30,30,10,30">
-                    <Button
-                        x:Name="LoafButton"
-                        x:Uid="LoafButton"
-                        Width="300"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        ui:Effects.Shadow="{StaticResource CommonShadow}"
-                        BorderThickness="3"
-                        Click="OnLoaf"
-                        Content="Loaf"
-                        CornerRadius="0"
-                        FontSize="48"
-                        Foreground="White">
-                        <Button.BorderBrush>
-                            <LinearGradientBrush StartPoint="0.1,0.5" EndPoint="1,0.5">
-                                <GradientStop Color="#26b5bf" />
-                                <GradientStop Offset="1" Color="#FF80C85E" />
-                            </LinearGradientBrush>
-                        </Button.BorderBrush>
-                    </Button>
-                    <TeachingTip
-                        x:Name="LoafTeachingTip"
-                        x:Uid="LoafTeachingTip"
-                        Title="请注意！"
-                        CloseButtonClick="OnStartLoaf"
-                        CloseButtonContent="开始摸鱼"
-                        Content="即将进入全屏，可以按 Esc 键退出。"
-                        IsLightDismissEnabled="True"
-                        PreferredPlacement="Bottom"
-                        Target="{x:Bind LoafButton}" />
+                    <StackPanel>
+                        <Button
+                            x:Name="LoafButton"
+                            x:Uid="LoafButton"
+                            Width="300"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            ui:Effects.Shadow="{StaticResource CommonShadow}"
+                            BorderThickness="3"
+                            Click="OnLoaf"
+                            Content="Loaf"
+                            CornerRadius="0"
+                            FontSize="48"
+                            Foreground="White">
+                            <Button.BorderBrush>
+                                <LinearGradientBrush StartPoint="0.1,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="#26b5bf" />
+                                    <GradientStop Offset="1" Color="#FF80C85E" />
+                                </LinearGradientBrush>
+                            </Button.BorderBrush>
+                        </Button>
+                        <TeachingTip
+                            x:Name="LoafTeachingTip"
+                            x:Uid="LoafTeachingTip"
+                            Title="请注意！"
+                            CloseButtonClick="OnStartLoaf"
+                            CloseButtonContent="开始摸鱼"
+                            Content="即将进入全屏，可以按 Esc 键退出。"
+                            IsLightDismissEnabled="True"
+                            PreferredPlacement="Bottom"
+                            Target="{x:Bind LoafButton}" />
+
+                        <ToggleButton
+                            x:Name="StyleToggleButton"
+                            x:Uid="StyleToggleButton"
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Center"
+                            Click="OnToggleStyle"
+                            Content="切换风格" />
+
+                        <TextBlock
+                            x:Name="StyleTextBlock"
+                            x:Uid="StyleTextBlock"
+                            Margin="0,10,0,0"
+                            Style="{ThemeResource BodyTextBlockStyle}"
+                            HorizontalAlignment="Center"
+                            Text="Win11风格（黑色背景）" />
+                    </StackPanel>
+
                     <StackPanel VerticalAlignment="Bottom">
                         <TextBlock
                             x:Uid="AppNameTextBlock"
@@ -110,14 +129,14 @@
                         <TextBlock
                             Margin="0,4,0,0"
                             Style="{ThemeResource BodyTextBlockStyle}"
-                            Text="Designed and Developed by dino.c" />
+                            Text="Designed and Developed by dino.c Reloaded by xa" />
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
                                 Margin="0,4,0,0"
                                 Foreground="Gray"
                                 Style="{ThemeResource BodyTextBlockStyle}"
-                                Text="© 2021 dino.c" />
+                                Text="© 2021 dino.c xa" />
                             <TextBlock
                                 Margin="16,4,0,0"
                                 Foreground="Gray"
@@ -128,7 +147,7 @@
                                 Margin="0,4,0,0"
                                 Foreground="Gray"
                                 Style="{ThemeResource BodyTextBlockStyle}"
-                                Text="1.0" />
+                                Text="1.0re" />
                         </StackPanel>
 
                         <StackPanel Margin="0,4,0,0" Orientation="Horizontal">
@@ -215,13 +234,8 @@
                                 <TextBlock x:Uid="IssuesLine4" Text="解决方法：将鼠标移动到屏幕的右边或下面，躲起来。" />
                             </StackPanel>
                         </StackPanel>
-
-
-
-
-
+                        
                     </StackPanel>
-
                 </Grid>
             </Grid>
         </Border>
